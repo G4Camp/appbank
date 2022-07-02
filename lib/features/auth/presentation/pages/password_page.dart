@@ -1,4 +1,5 @@
 import 'package:appbank/core/constants/app_bank_labels.dart';
+import 'package:appbank/core/constants/masks.dart';
 import 'package:appbank/core/widgets/buttons/bottom_button.dart';
 import 'package:appbank/core/widgets/buttons/link_button.dart';
 import 'package:appbank/core/widgets/fields/auth_field.dart';
@@ -7,8 +8,16 @@ import 'package:appbank/injection.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class PasswordPage extends StatelessWidget {
+class PasswordPage extends StatefulWidget {
   const PasswordPage({Key? key}) : super(key: key);
+
+  @override
+  State<PasswordPage> createState() => _PasswordPageState();
+}
+
+class _PasswordPageState extends State<PasswordPage> {
+  bool obscureText = true;
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +54,7 @@ class PasswordPage extends StatelessWidget {
                       child: SizedBox(
                         width: width,
                         child: AutoSizeText(
-                          AppBankLabels.qualSeuCpf,
+                          AppBankLabels.qualSuaSenha,
                           style: Theme.of(context).textTheme.headline2,
                           maxLines: 2,
                         ),
@@ -54,7 +63,22 @@ class PasswordPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20),
                       child: AuthField(
-                        controller: TextEditingController(),
+                        isPassword: true,
+                        controller: passwordController,
+                        onChangeVisibility: () => setState(
+                          () => obscureText = !obscureText,
+                        ),
+                        obscureText: obscureText,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20.0, right: 20, bottom: 50),
+                      child: AppBankLinkButton(
+                        title: AppBankLabels.esqueciMinhaSenha,
+                        titleColor: const Color.fromARGB(255, 34, 34, 34),
+                        fontWeight: FontWeight.w400,
+                        mainAxisAlignment: MainAxisAlignment.start,
                       ),
                     ),
                   ],
@@ -65,16 +89,6 @@ class PasswordPage extends StatelessWidget {
                   right: 0,
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20.0, right: 20, bottom: 50),
-                        child: AppBankLinkButton(
-                          title: AppBankLabels.isNewHere,
-                          titleColor: const Color.fromARGB(255, 34, 34, 34),
-                          fontWeight: FontWeight.w400,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                        ),
-                      ),
                       Container(
                         color: Colors.purple,
                         child: AppBankBottomButton(

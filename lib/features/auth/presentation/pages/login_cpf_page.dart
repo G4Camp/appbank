@@ -1,4 +1,5 @@
 import 'package:appbank/core/constants/app_bank_labels.dart';
+import 'package:appbank/core/constants/masks.dart';
 import 'package:appbank/core/widgets/buttons/bottom_button.dart';
 import 'package:appbank/core/widgets/buttons/link_button.dart';
 import 'package:appbank/core/widgets/fields/auth_field.dart';
@@ -7,9 +8,15 @@ import 'package:appbank/injection.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class LoginCpfPage extends StatelessWidget {
+class LoginCpfPage extends StatefulWidget {
   const LoginCpfPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginCpfPage> createState() => _LoginCpfPageState();
+}
+
+class _LoginCpfPageState extends State<LoginCpfPage> {
+  final TextEditingController cpfController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -54,7 +61,8 @@ class LoginCpfPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20),
                       child: AuthField(
-                        controller: TextEditingController(),
+                        controller: cpfController,
+                        formatter: Mask.cpfMask,
                       ),
                     ),
                   ],

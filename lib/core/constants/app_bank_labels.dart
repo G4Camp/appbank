@@ -6,4 +6,6 @@ class AppBankLabels {
       "Bom te ver novamente! Para entrar, digite seu CPF";
   static String continueLabel = "Continuar";
   static String isNewHere = "É novo aqui? Começar?";
+  static String qualSuaSenha = "Qual sua senha de acesso do aplicativo?";
+  static String esqueciMinhaSenha = "Esqueci minha senha";
 }
