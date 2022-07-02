@@ -1,4 +1,8 @@
 import 'package:appbank/core/constants/app_bank_images.dart';
+import 'package:appbank/core/constants/app_bank_labels.dart';
+import 'package:appbank/core/widgets/buttons/login_button.dart';
+import 'package:appbank/core/widgets/buttons/register_button.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class IntialPage extends StatelessWidget {
@@ -20,22 +24,64 @@ class IntialPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Container(
-              margin: EdgeInsets.only(top: statusBar),
-              height: height - statusBar,
-              width: width,
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: width,
-                    height: (height - statusBar) * 0.7,
-                    child: Image.asset(AppBankImages.nuLogo),
+            margin: EdgeInsets.only(top: statusBar),
+            height: height - statusBar,
+            width: width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: (height - statusBar) * 0.6,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, top: 75),
+                    child: Image.asset(
+                      AppBankImages.nuLogo,
+                      alignment: Alignment.topLeft,
+                    ),
                   ),
-                  SizedBox(
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.06),
+                  child: SizedBox(
                     width: width,
-                    height: (height - statusBar) * 0.3,
+                    height: (height - statusBar) * 0.4,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: width,
+                          height: (height - statusBar) * 0.15,
+                          child: AutoSizeText(
+                            AppBankLabels.umMundo,
+                            maxLines: 3,
+                            style: Theme.of(context).textTheme.headline1,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: (height - statusBar) * 0.02),
+                          child: SizedBox(
+                            height: (height - statusBar) * 0.07,
+                            child: AppBankRegisterButton(
+                              onPressed: () {},
+                              width: width,
+                              height: (height - statusBar) * 0.07,
+                              title: AppBankLabels.start,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: (height - statusBar) * 0.07,
+                          child: AppBankLoginButton(
+                            title: AppBankLabels.login,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ))
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
