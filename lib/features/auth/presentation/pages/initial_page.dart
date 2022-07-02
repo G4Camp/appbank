@@ -1,7 +1,9 @@
 import 'package:appbank/core/constants/app_bank_images.dart';
 import 'package:appbank/core/constants/app_bank_labels.dart';
-import 'package:appbank/core/widgets/buttons/login_button.dart';
+import 'package:appbank/core/widgets/buttons/link_button.dart';
 import 'package:appbank/core/widgets/buttons/register_button.dart';
+import 'package:appbank/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:appbank/injection.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -71,8 +73,9 @@ class IntialPage extends StatelessWidget {
                         ),
                         SizedBox(
                           height: (height - statusBar) * 0.07,
-                          child: AppBankLoginButton(
+                          child: AppBankLinkButton(
                             title: AppBankLabels.login,
+                            onPressed: () => getIt<AuthBloc>().add(InitLogin()),
                           ),
                         ),
                       ],
