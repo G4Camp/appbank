@@ -10,11 +10,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<InitLogin>((event, emit) {
       Get.toNamed(AppBankRoutes.loginCpf);
     });
+    on<SetPassword>((event, emit) {
+      emit(ValidatedCpf(cpf: event.cpf));
+      Get.toNamed(AppBankRoutes.loginPassword);
+    });
+    on<LoginEvent>(((event, emit) {
+      if (state is ValidatedCpf) {
+        emit(SendingLogin(
+            cpf: (state as ValidatedCpf).cpf, password: event.password));
+      }
+    }));
     on<PopEvent>((event, emit) {
       Get.back();
-    });
-    on<SetPassword>((event, emit) {
-      Get.toNamed(AppBankRoutes.loginPassword);
     });
   }
 }

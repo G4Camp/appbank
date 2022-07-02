@@ -89,7 +89,8 @@ class _LoginCpfPageState extends State<LoginCpfPage> {
                           height: height * 0.05,
                           width: width,
                           title: AppBankLabels.continueLabel,
-                          onPressed: () => getIt<AuthBloc>().add(SetPassword()),
+                          onPressed: () => getIt<AuthBloc>()
+                              .add(SetPassword(cpf: cpfController.text)),
                         ),
                       ),
                     ],

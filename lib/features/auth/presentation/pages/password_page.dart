@@ -1,5 +1,4 @@
 import 'package:appbank/core/constants/app_bank_labels.dart';
-import 'package:appbank/core/constants/masks.dart';
 import 'package:appbank/core/widgets/buttons/bottom_button.dart';
 import 'package:appbank/core/widgets/buttons/link_button.dart';
 import 'package:appbank/core/widgets/fields/auth_field.dart';
@@ -7,6 +6,7 @@ import 'package:appbank/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:appbank/injection.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PasswordPage extends StatefulWidget {
   const PasswordPage({Key? key}) : super(key: key);
@@ -89,14 +89,27 @@ class _PasswordPageState extends State<PasswordPage> {
                   right: 0,
                   child: Column(
                     children: [
-                      Container(
-                        color: Colors.purple,
-                        child: AppBankBottomButton(
-                          height: height * 0.05,
-                          width: width,
-                          title: AppBankLabels.continueLabel,
-                          onPressed: () => getIt<AuthBloc>().add(SetPassword()),
-                        ),
+                      BlocBuilder<AuthBloc, AuthState>(
+                        bloc: getIt<AuthBloc>(),
+                        builder: (context, state) {
+                          if (state is SendingLogin) {
+                            return const CircularProgressIndicator();
+                          }
+
+                          return Container(
+                            color: Colors.purple,
+                            child: AppBankBottomButton(
+                              height: height * 0.05,
+                              width: width,
+                              title: AppBankLabels.continueLabel,
+                              onPressed: () => getIt<AuthBloc>().add(
+                                LoginEvent(
+                                  password: passwordController.text,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
