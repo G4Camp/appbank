@@ -16,3 +16,15 @@ class LoginEvent extends AuthEvent {
 
   LoginEvent({required this.password});
 }
+
+class ErrorLoginEvent extends AuthEvent {
+  String? msg;
+
+  ErrorLoginEvent({this.msg});
+}
+
+class SucessLoginEvent extends AuthEvent {
+  User user;
+
+  SucessLoginEvent({required this.user});
+}
