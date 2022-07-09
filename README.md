@@ -4,13 +4,24 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Para rodar no vscode criar no .launch.json o arquivo
 
-A few resources to get you started if this is your first Flutter project:
+````{
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PROD",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "DEV",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_dev.dart",
+        },
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    ]
+}```
+````

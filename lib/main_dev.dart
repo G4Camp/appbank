@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlavorConfig(
-      name: "PROD",
+      name: "DEV",
       variables: {
-        "baseUrl": "https://www.prod.com",
+        "baseUrl": "https://www.dev.com",
       },
     );
     return AppBank.app;
