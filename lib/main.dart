@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       name: "PROD",
       variables: {
         "baseUrl": "https://www.prod.com",
+        "keycloack": "prod",
       },
     );
     return AppBank.app;

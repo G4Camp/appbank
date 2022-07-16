@@ -48,3 +48,5 @@ app.*.map.json
 .vscode/launch.json
 pubspec.lock
 pubspec.lock
+assets/images/json/keyclock.json
+assets/json/keyclock.json

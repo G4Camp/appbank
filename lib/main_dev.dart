@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       name: "DEV",
       variables: {
         "baseUrl": "https://www.dev.com",
+        "keycloack": "dev",
       },
     );
     return AppBank.app;

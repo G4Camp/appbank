@@ -1,0 +1,12 @@
+{
+    "dev": {
+        "realm": "",
+        "auth-server-url": "",
+        "ssl-required": "",
+        "resource": "",
+        "public-client": true,
+        "confidential-port": 0,
+        "client_secret": ""
+    },
+    "prod": {}
+}

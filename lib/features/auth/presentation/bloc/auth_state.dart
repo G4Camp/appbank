@@ -19,3 +19,9 @@ class SendingLogin extends AuthState {
     required this.password,
   });
 }
+
+class LoginError extends AuthState {
+  final String msg;
+
+  LoginError({required this.msg});
+}

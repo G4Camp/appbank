@@ -96,18 +96,23 @@ class _PasswordPageState extends State<PasswordPage> {
                             return const CircularProgressIndicator();
                           }
 
-                          return Container(
-                            color: Colors.purple,
-                            child: AppBankBottomButton(
-                              height: height * 0.05,
-                              width: width,
-                              title: AppBankLabels.continueLabel,
-                              onPressed: () => getIt<AuthBloc>().add(
-                                LoginEvent(
-                                  password: passwordController.text,
+                          return Column(
+                            children: [
+                              if (state is LoginError) Text(state.msg),
+                              Container(
+                                color: Colors.purple,
+                                child: AppBankBottomButton(
+                                  height: height * 0.05,
+                                  width: width,
+                                  title: AppBankLabels.continueLabel,
+                                  onPressed: () => getIt<AuthBloc>().add(
+                                    LoginEvent(
+                                      password: passwordController.text,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           );
                         },
                       ),
